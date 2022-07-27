@@ -1,0 +1,22 @@
+{% extends 'main.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      {% for room in rooms %}
+      <li>{{room.id}} -- {{room.name}}</li>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<h1>Example of Django Template Processors</h1>
+<div>
+  <p>The Processors are added by default.</p>
+  <p>request.user: {{ request.user }}</p>
+  <p>request.path: {{ request.path }}</p>
+  <p>user: {{ user }}</p>
+  <p>user.is_authenticated: {{ user.is_authenticated }}</p>
+</div>
+
+{% endblock %}
