@@ -1,0 +1,7 @@
+{% extends 'main.html' %} {% block content %}
+<div style="text-align: center">
+  {% for item in object_list %}
+  <li>{{item.title}} - Delete</li>
+  {% endfor %}
+</div>
+{% endblock %}

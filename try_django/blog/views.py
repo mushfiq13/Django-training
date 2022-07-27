@@ -1,11 +1,7 @@
-from email.policy import HTTP
-from multiprocessing import context
-from re import template
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import BlogPost
 
-# Create your views here.
 # def blog_post_detail_page(request):
 #     obj = BlogPost.objects.get(id=1) # query -> database -> data -> django renders it
 #     context = {"object": obj}
@@ -45,26 +41,26 @@ from .models import BlogPost
     # return render(request, "blog_post_detail.html", context)
 
 
+# list out objects
+# could be search
 def blog_post_list_view(request):
-    # list out objects
-    # could be search
-
-    # queryset = BlogPost.objects.filter(title__icontains="Hello")
+    # queryset = BlogPost.objects.filter(title__icontains="Want")
     queryset = BlogPost.objects.all()
     template_name = 'blog_post_list.html'
     context = {"object_list": queryset}
     return render(request, template_name, context)
 
+# 1 object -> detail view
 def blog_post_detail_view(request, slug):
-    # 1 object -> detail view
+    print(request, slug)
     obj = get_object_or_404(BlogPost, slug=slug)
     template_name = 'blog_post_detail.html'
     context = {"object": obj}
     return render(request, template_name, context)
 
+# create objects
+# ? use a form
 def blog_post_create_view(request):
-    # create objects
-    # ? use a form
     template_name = 'blog_post_create.html'
     context = {"form": None}
     return render(request, template_name, context)
